@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PeopleIntuit</title>
+
+<style type="text/css">
+
+* { margin: 0; padding: 0; }
+
+html { height: 100%; font-size: 62.5% }
+
+body { height: 100%; background-color: #FFFFFF; font: 1.2em Verdana, Arial, Helvetica, sans-serif; }
+
+
+
+/* ==================== Form style sheet ==================== */
+
+form { margin: 15px 0 0 200px; width: 950px; padding-bottom: 30px; }
+
+fieldset { margin: 0 0 22px 0; border: 1px solid #4d58f0; padding: 12px 17px; background-color: #DAF5C7; }
+legend { font-size: 1.1em; background-color: #4d58f0; color: #FFFFFF; font-weight: bold; padding: 4px 8px; }
+
+label.float { float: left; display: block; width: 100px; margin: 4px 0 0 0; clear: left; }
+label { display: inline-block; width: auto; margin: 0 0 10px 0; }
+label.spam-protection { display: inline; width: auto; margin: 0; }
+label.answer { width: auto;display: inline-block;  padding-bottom:10px; display: inline; align-items: center; }
+
+input.inp-text, input.choose, input.answer { border: 1px solid #909090; padding: 3px;padding-top:10px; }
+input.inp-text { width: 300px; margin: 100 0 8px 0; }
+textarea { width: 400px; height: 40px; margin: 0 0 12px 0; display: block; }
+textarea.answer { width: 300px; height: 30px; margin: 0 0 0px 0; display: inline; }
+
+input.choose { margin: 0 2px 0 0; }
+input.answer { width: 40px; margin: 0 0 0 10px; }
+input.submit-button { font: 1.4em Georgia, "Times New Roman", Times, serif; letter-spacing: 1px; display: inline; margin: 15px 0 0 270px;}
+
+
+SELECT.float {  display: block; width: 200px; margin: 4px 0 0 0; clear: right; }
+SELECT { display: block; width: auto; margin: 0 0 10px 0; }
+
+form br { display: none; }
+
+/* ==================== Form style sheet END ==================== */
+
+</style>
+
+<!--[if IE]>
+<style type="text/css">
+
+/* ==================== Form style sheet for IE ==================== */
+
+fieldset { padding: 22px 17px 12px 17px; position: relative; margin: 12px 0 34px 0; }
+legend { position: absolute; top: -12px; left: 10px; }
+label.float { margin: 5px 0 0 0; }
+label { margin: 0 0 5px 0; }
+label.spam-protection { display: inline; width: auto; position: relative; top: -3px; }
+input.choose { border: 0; margin: 0; }
+input.submit-button { margin: -10px 0 0 0; }
+
+
+/* ==================== Form style sheet for IE end ==================== */
+
+</style>
+<![endif]-->
+</head>
+<body>
+
+<H2 style="padding-top:10px"><CENTER><U>CREATE AN ASSESSMENT</U></CENTER></H2>
+
+	<form action="" id = form1 method="post">{% csrf_token %}
+		<!-- ============================== Fieldset 1 ============================== -->
+		<fieldset>
+			<legend>Assessment Details:</legend>
+				<label for="input-one" class="float"><strong>PROFILE</strong></label>
+				<SELECT id="PROFILE" class="float">
+				  <OPTION VALUE="HR">SALES</OPTION>
+				  <OPTION VALUE="MANAGER">FINANCE</OPTION>
+				  <OPTION VALUE="ANALYST">MANAGERIAL</OPTION>
+				  <OPTION VALUE="SUPERVISOR">SUPERVISOR</OPTION>
+				  </SELECT>
+				  <br />
+
+				<label for="input-two" class="float"><strong>Category</strong></label>
+				<SELECT id="CATEGORY" class="float">
+				  <OPTION VALUE="PROTO1">PROTO1</OPTION>
+				  <OPTION VALUE="PROTO2">PROTO2</OPTION>
+				  <OPTION VALUE="PROTO3">PROTO3</OPTION>
+				  <OPTION VALUE="PROTO4">PROTO4</OPTION>
+				</SELECT>
+				<br />
+
+				<label for="input-two" class="float"><strong>Assessment Name</strong></label><br />
+				<input class="inp-text" name="input-three-name"  id="assessment_name" type="text" size="20" />
+
+		</fieldset>
+		<!-- ============================== Fieldset 1 end ============================== -->
+
+
+		<!-- ============================== Fieldset 2 ============================== -->
+		<fieldset>
+			<legend>Question Details</legend>
+
+				<label for="input-two" class="float"><strong>Question ID</strong></label><br />
+				<input name="input-three-name" disabled id="question_id_txt" style="text-align: center;" type="text" value=1  size="5px" />
+				<div style="padding-top:20px;">
+				<label for="question-type" ><strong>Question Type &nbsp; &nbsp; &nbsp;</strong></label><br />
+				<label for="option1"><input class="choose" name="option1" id="option1" type="radio" value="1" /> &nbsp; Image &nbsp;</label><br />
+				<label for="option2"><input class="choose" name="option1" id="option2" type="radio" value="2" /> &nbsp; Video &nbsp;</label><br />
+				<label for="option3"><input class="choose" name="option1" id="option3" type="radio" value="3" /> &nbsp; Text &nbsp;</label><br />
+				<label for="option4"><input class="choose" name="option1" id="option4" type="radio" value="4" /> &nbsp; MCQ &nbsp;</label><br />
+				</div>
+			<label for="question-desc" ><strong>Question Description &nbsp; &nbsp; &nbsp;</strong></label><br />
+			<textarea name="textarea-name" id="question_decription" title="Note or message"></textarea><br />
+
+			<div style="padding-top:20px; ">
+			<label for="Answer-desc" class="answer" ><strong>Answer Detail-1 &nbsp; &nbsp;</strong></label><br />
+			<textarea name="textarea-name" class="answer" id="question_decription1" title="Note or message"></textarea>
+			<label for="Answer-desc" class="answer"><strong>&nbsp; &nbsp; Answer Detail-2 &nbsp; &nbsp;</strong></label><br />
+			<textarea name="textarea-name" class="answer" id="question_decription2" title="Note or message"></textarea>
+
+			</div>
+			<div style="padding-top:30px; ">
+			<label for="Answer-desc" class="answer"><strong>Answer Detail-3 &nbsp; &nbsp;</strong></label><br />
+			<textarea name="textarea-name" class="answer" id="question_decription3" title="Note or message"></textarea>
+			<label for="Answer-desc" class="answer"><strong>&nbsp; &nbsp; Answer Detail-4 &nbsp;  &nbsp;</strong></label><br />
+			<textarea name="textarea-name" class="answer" id="question_decription4" title="Note or message"></textarea>
+			</div>
+
+			<div style="padding-top:30px;">
+			<label for="Answer-desc" ><strong>Answer Detail-5 &nbsp; &nbsp;</strong></label><br />
+			<textarea name="textarea-name" class="answer" id="question_decription5" title="Note or message"></textarea>
+			<label for="Answer-desc" class="answer"><strong>&nbsp; &nbsp; Answer Detail-6 &nbsp;  &nbsp;</strong></label><br />
+			<textarea name="textarea-name" class="answer" id="question_decription6" title="Note or message"></textarea>
+			</div>
+
+<!--		<label class="spam-protection" for="protection">Spam protection: <strong>6&nbsp;+&nbsp;5&nbsp;=</strong></label><br />
+			<input class="answer" type="text" name="antispam" id="protection" size="5" />
+-->
+		</fieldset>
+		<!-- ============================== Fieldset 3 end ============================== -->
+
+		<p><input class="submit-button" id = "Add" type="button" name="Submit" value=" &nbsp; Add Question &nbsp;" onclick="question_iterate()" />
+		<input class="submit-button" type="submit" name="Finish" value="Finish Assessment" /></p>
+	</form>
+		<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+
+//For getting CSRF token
+function getCookie(name) {
+	var cookieValue = null;
+	if (document.cookie && document.cookie != '') {
+			var cookies = document.cookie.split(';');
+			for (var i = 0; i < cookies.length; i++) {
+					var cookie = jQuery.trim(cookies[i]);
+					// Does this cookie string begin with the name we want?
+					if (cookie.substring(0, name.length + 1) == (name + '=')) {
+							cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+							break;
+					}
+			}
+	}
+	return cookieValue;
+}
+
+
+//For doing AJAX post
+$("#Add").click(function(e) {
+
+	e.preventDefault();
+	var csrftoken = getCookie('csrftoken');
+	var Profile = document.getElementById("PROFILE").value;
+	var Primary_category = document.getElementById("CATEGORY").value;
+	var assessment_name = $('#assessment_name').val();
+	var options = document.getElementsByName('option_1');
+  var choice_value;
+
+	//var qtype = $('#RadioButton').val();
+	var q_id_txt = $('#question_id_txt').val();
+	var text_question = $('#question_decription').val();
+	var ans_detail1 = $('#question_decription1').val();
+	var ans_detail2 = $('#question_decription2').val();
+	var ans_detail3 = $('#question_decription3').val();
+	var ans_detail4 = $('#question_decription4').val();
+	var ans_detail5 = $('#question_decription5').val();
+	var ans_detail6 = $('#question_decription6').val();
+
+//This is the Ajax post.Observe carefully. It is nothing but details of where_to_post,what_to_post
+
+$.ajax({
+url : window.location.href, // the endpoint,commonly same url
+type : "POST", // http method
+data : { csrfmiddlewaretoken : csrftoken,
+Profile:Profile,
+Primary_category:Primary_category,
+assessment_name:assessment_name,
+qid : q_id_txt,
+//qtype: choice_value,
+text_question : text_question,
+ans_detail1:ans_detail1,
+ans_detail2:ans_detail2,
+ans_detail3:ans_detail3,
+ans_detail4:ans_detail4,
+ans_detail5:ans_detail5,
+ans_detail6:ans_detail6,
+}, // data sent with the post request
+
+			// handle a successful response
+			success : function(json) {
+					console.log(json); // another sanity check
+					alert('Question Description    '+json['Profile'] +'!.' + '  Question is Added'+ json['text_question']);
+
+					$('#question_decription').val("");
+					$('#question_decription1').val("");
+					$('#question_decription2').val("");
+					$('#question_decription3').val("");
+					$('#question_decription4').val("");
+					$('#question_decription5').val("");
+					$("#question_decription6").val("");
+			},
+
+			// handle a non-successful response
+			error : function(xhr,errmsg,err) {
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+			}
+	});
+});
+
+</script>
+<script>
+		function question_iterate() {
+				var question_id = document.getElementById("question_id_txt").value;
+				console.log(question_id);
+				var question_id = parseInt(question_id);
+				var question_id = question_id + 1;
+				document.getElementById("question_id_txt").value = question_id;
+				}
+</script>
+
+</body>
+</html>

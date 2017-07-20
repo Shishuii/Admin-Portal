@@ -68,7 +68,7 @@ input.submit-button { margin: -10px 0 0 0; }
 
 <H2 style="padding-top:10px"><CENTER><U>CREATE AN ASSESSMENT</U></CENTER></H2>
 
-	<form action="" method="post">{%csrf_token%}
+	<form action="" method="post" id = form1>{%csrf_token%}
 		<!-- ============================== Fieldset 1 ============================== -->
 		<fieldset>
 			<legend>Assessment Details:</legend>
@@ -86,7 +86,7 @@ input.submit-button { margin: -10px 0 0 0; }
 				<label for="input-two" class="float"><strong>Question ID</strong></label><br />
 				<input name="input-three-name" disabled id="question_id_txt" style="text-align: center;" type="text" value=1  size="5px" />
 				<div style="padding-top:20px;">
-				<label for="question-type" ><strong>Question Type &nbsp; &nbsp; &nbsp;</strong></label><br />
+				<label for="question-type"  id = RadioButton> <strong>Question Type &nbsp; &nbsp; &nbsp;</strong></label><br />
 				<label for="option1"><input class="choose" name="option[]" id="option1" type="radio" value="1" /> &nbsp; Image &nbsp;</label><br />
 				<label for="option2"><input class="choose" name="option[]" id="option2" type="radio" value="2" /> &nbsp; Video &nbsp;</label><br />
 				<label for="option3"><input class="choose" name="option[]" id="option3" type="radio" value="3" /> &nbsp; Text &nbsp;</label><br />
@@ -177,6 +177,7 @@ url : window.location.href, // the endpoint,commonly same url
 type : "POST", // http method
 data : { csrfmiddlewaretoken : csrftoken,
 qid : q_id_txt,
+//qtype: qtype,
 text_question : text_question,
 ans_detail1:ans_detail1,
 ans_detail2:ans_detail2,
@@ -190,6 +191,7 @@ ans_detail6:ans_detail6,
 			success : function(json) {
 					console.log(json); // another sanity check
 					alert('Question Description    '+json['qid'] +'!.' + '  Question is Added'+ json['text_question']);
+					$("#ans_detail6").val("");
 			},
 
 			// handle a non-successful response
@@ -200,5 +202,21 @@ ans_detail6:ans_detail6,
 });
 
 </script>
+
+<script type="text/javascript">
+    var frm = $('#form1');
+    frm.submit(function () {
+        $.ajax({
+            type: frm.attr('POST'),
+            url: frm.attr('action'),
+            data: frm.serialize(),
+						alert(frm[qtype]);
+
+        });
+        return false;
+    });
+</script>
+
+
 </body>
 </html>

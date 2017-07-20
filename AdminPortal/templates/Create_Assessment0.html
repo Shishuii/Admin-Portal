@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PeopleIntuit</title>
+
+<style type="text/css">
+
+* { margin: 0; padding: 0; }
+
+html { height: 100%; font-size: 62.5% }
+
+body { height: 100%; background-color: #FFFFFF; font: 1.2em Verdana, Arial, Helvetica, sans-serif; }
+
+
+
+/* ==================== Form style sheet ==================== */
+
+form { margin: 15px 0 0 200px; width: 950px; padding-bottom: 30px; }
+
+fieldset { margin: 0 0 22px 0; border: 1px solid #4d58f0; padding: 12px 17px; background-color: #DAF5C7; }
+legend { font-size: 1.1em; background-color: #4d58f0; color: #FFFFFF; font-weight: bold; padding: 4px 8px; }
+
+label.float { float: left; display: block; width: 100px; margin: 4px 0 0 0; clear: left; }
+label { display: inline-block; width: auto; margin: 0 0 10px 0; }
+label.spam-protection { display: inline; width: auto; margin: 0; }
+label.answer { width: auto;display: inline-block;  padding-bottom:10px; display: inline; align-items: center; }
+
+input.inp-text, input.choose, input.answer { border: 1px solid #909090; padding: 3px;padding-top:10px; }
+input.inp-text { width: 300px; margin: 100 0 8px 0; }
+textarea { width: 400px; height: 40px; margin: 0 0 12px 0; display: block; }
+textarea.answer { width: 300px; height: 30px; margin: 0 0 0px 0; display: inline; }
+
+input.choose { margin: 0 2px 0 0; }
+input.answer { width: 40px; margin: 0 0 0 10px; }
+input.submit-button { font: 1.4em Georgia, "Times New Roman", Times, serif; letter-spacing: 1px; display: inline; margin: 15px 0 0 270px;}
+
+
+SELECT.float {  display: block; width: 200px; margin: 4px 0 0 0; clear: right; }
+SELECT { display: block; width: auto; margin: 0 0 10px 0; }
+
+form br { display: none; }
+
+/* ==================== Form style sheet END ==================== */
+
+</style>
+
+<!--[if IE]>
+<style type="text/css">
+
+/* ==================== Form style sheet for IE ==================== */
+
+fieldset { padding: 22px 17px 12px 17px; position: relative; margin: 12px 0 34px 0; }
+legend { position: absolute; top: -12px; left: 10px; }
+label.float { margin: 5px 0 0 0; }
+label { margin: 0 0 5px 0; }
+label.spam-protection { display: inline; width: auto; position: relative; top: -3px; }
+input.choose { border: 0; margin: 0; }
+input.submit-button { margin: -10px 0 0 0; }
+
+
+/* ==================== Form style sheet for IE end ==================== */
+
+</style>
+<![endif]-->
+</head>
+<body>
+
+<H2 style="padding-top:10px"><CENTER><U>CREATE AN ASSESSMENT</U></CENTER></H2>
+
+	<form action="" id = form1 method="post">{% csrf_token %}
+		<!-- ============================== Fieldset 1 ============================== -->
+		<fieldset>
+
+			<legend>Assessment Name </legend>
+
+
+
+				<h4> {{form.assessment_name}}  </h4>
+
+		</fieldset>
+		<!-- ============================== Fieldset 1 end ============================== -->
+
+
+		<!-- ============================== Fieldset 2 ============================== -->
+		<fieldset>
+			<legend>Question Details</legend>
+
+				<label for="input-two" class="float"><strong>Question ID</strong></label>
+				{{form.qid}}
+				<div style="padding-top:20px;">
+				<label for="question-type" ><strong>Question Type &nbsp; &nbsp; &nbsp;</strong></label><br />
+				<label for="option1"><input class="choose" name="option1" id="option1" type="radio" value="1" /> &nbsp; Image &nbsp;</label><br />
+				<label for="option2"><input class="choose" name="option1" id="option2" type="radio" value="2" /> &nbsp; Video &nbsp;</label><br />
+				<label for="option3"><input class="choose" name="option1" id="option3" type="radio" value="3" /> &nbsp; Text &nbsp;</label><br />
+				<label for="option4"><input class="choose" name="option1" id="option4" type="radio" value="4" /> &nbsp; MCQ &nbsp;</label><br />
+				</div>
+			<label for="question-desc" ><strong>Question Description &nbsp; &nbsp; &nbsp;</strong></label><br />
+			{{form.text_question}}
+
+			<div style="padding-top:20px; ">
+			<label for="Answer-desc" class="answer" ><strong>Answer Detail-1 &nbsp; &nbsp;</strong></label>
+			{{form.ans_detail1}}
+			<label for="Answer-desc" class="answer"><strong>&nbsp; &nbsp; Answer Detail-2 &nbsp; &nbsp;</strong></label><br />
+		  {{form.ans_detail2}}
+
+			</div>
+			<div style="padding-top:30px; ">
+			<label for="Answer-desc" class="answer"><strong>Answer Detail-3 &nbsp; &nbsp;</strong></label><br />
+			{{form.ans_detail3}}
+			<label for="Answer-desc" class="answer"><strong>&nbsp; &nbsp; Answer Detail-4 &nbsp;  &nbsp;</strong></label><br />
+			{{form.ans_detail4}}
+			</div>
+
+			<div style="padding-top:30px;">
+			<label for="Answer-desc" ><strong>Answer Detail-5 &nbsp; &nbsp;</strong></label><br />
+			{{form.ans_detail5}}
+			<label for="Answer-desc" class="answer"><strong>&nbsp; &nbsp; Answer Detail-6 &nbsp;  &nbsp;</strong></label><br />
+			{{form.ans_detail6}}
+			</div>
+
+<!--		<label class="spam-protection" for="protection">Spam protection: <strong>6&nbsp;+&nbsp;5&nbsp;=</strong></label><br />
+			<input class="answer" type="text" name="antispam" id="protection" size="5" />
+-->
+		</fieldset>
+		<!-- ============================== Fieldset 3 end ============================== -->
+
+		<p>
+		<input class="submit-button" type="submit" name="Finish" value="Update Question" /></p>
+	</form>
+		
+
+</body>
+</html>

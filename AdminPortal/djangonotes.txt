@@ -1,0 +1,5 @@
+* To fetch data from HTML Form we use "name" and not id .
+
+
+**** for using updateview either use django form only  or if want to use html then , think ??
+**************

@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <title>{% block title %}Peopleintuit{% endblock %}</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<div id="content" class="container">
+    <div class="md-col-10">
+      <h2>Here are all Questions </h2>
+          <div class="col-md-6">
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Slno:</th>
+                                        <th>Profile</th>
+                                        <th>Assessment Name </th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for question in object_list %}
+                                    <tr>
+                                        <td class="success">{{question.qid}}</td>
+                                        <td class="info">{{ question.Profile }}</td>
+                                        <td class="warning">{{ question.assessment_name}}</td>
+                                        <td class="danger"><a href="{% url 'assessment-update' question.quid %}">Edit</a>::
+                                        <a href="{% url 'assessment-delete' question.quid %}">Delete</a>::
+                                        <a href="{%url 'assessment-detail' question.quid%}">View </a>
+                                        </td>
+                                    </tr>
+
+                                    {% empty %}
+                                        <li>No Assessments yet.</li>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <p> <a href="{% url 'assessment-add' %}" class="btn btn-success">Create Assessment</a></p>
+    </div>
+
+
+</div>
+</body>
+</html>
