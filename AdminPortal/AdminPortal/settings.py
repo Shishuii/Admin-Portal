@@ -76,26 +76,26 @@ WSGI_APPLICATION = 'AdminPortal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'assessment_dev',
-#         'USER': 'pplintuit_dev',
-#         'PASSWORD': 'P9#t0uQT6',
-#         'HOST': '52.163.120.152',   # Or an IP Address that your DB is hosted on
-#         'PORT': '3306',
-#     },
-#     'OPTIONS': {
-#         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-#     },
-# }
 DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': 'assessment_dev',
+         'USER': 'pplintuit_dev',
+         'PASSWORD': 'P9#t0uQT6',
+         'HOST': '52.163.120.152',   # Or an IP Address that your DB is hosted on
+         'PORT': '3306',
+     },
+     'OPTIONS': {
+         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+     },
+}
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-}
-
+ }
+'''
 
 
 # Password validation
